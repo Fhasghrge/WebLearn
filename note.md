@@ -43,3 +43,57 @@
 - `window.history`包含浏览器历史url的集合`history.back()||forward()||go()`
 - `loaction`是关于当前页面url的对象，能够获得url的一些属性的对象
 - `screen`获得关于用户当前屏幕相关的信息，例如宽高
+- **构造函数中prototype什么意思？**
+    - 使用js模拟类的实现
+    ```html
+    <script>
+        //使用js模拟类的实现
+        function Person(){  //定义一个空的构造函数
+
+        }
+        Person.prototype = {  //原生态，也就是类？反正就是这么用的
+            name: "zhangshuang",
+            age: 19,
+            eat: function(){
+                alert("chizhe")
+            }
+        var zhang =new Person(); //构造函数使用
+        }
+    </script>
+    ```
+    - 继承：
+    ```html
+    <script>
+        function Person(){
+
+        }
+        Person.prototype.say = function(){
+            alert("oooo");
+        }
+        function Student(){
+
+        }
+        Student.prototype = new Person();  //继承的过程
+        var s = new Student();
+        Student.prototype.say = function(){     //对继承来的父类进行复写
+            alert("student-hello");
+        }
+    </script>
+    ```
+
+##记录学习JavaScript的笔记：
+- **原生链是什么？**
+- **什么是反射我也没懂？**
+- 函数也是一个对象
+- 什么是匿名函数`anonymous`：
+    ```html
+    <script>
+    var zhang = function(){ //通过匿名函数以函数返回值的形式赋值来构造函数
+        alert("加油呀");
+    }
+    </script>
+    ```
+- **什么是闭包？**
+- 内部函数仅仅在内部可以使用
+- 闭包由函数以及创建函数时词法环境决定的，这个环境包括了闭包创建时所能访问的全部
+  局部变量
