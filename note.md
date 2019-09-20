@@ -1,15 +1,44 @@
-# NOTE
+# NOTE  (JavaScript)
 ## 语法知识的学习（来源于Github教程）
-- 事件的三要素： 事件源 + 事件 + 事件驱动程序
-- **为什么用getElementsByClassName不能产生事件驱动程序？**:需要使用序号，因为得    到的是数组
-- 对于函数，fn代表整个函数，而fn()代表函数的返回值
-- 在js代码中属性名使用camel，属性值使用双引号括起来，属性名也是使用双引号，防止不
-  规范的写法
-- DOM操作文档上元素的API
-- BOM操作浏览器的API
+- 大致概要：
+    - 事件的三要素： 事件源 + 事件 + 事件驱动程序
+    - **为什么用getElementsByClassName不能产生事件驱动程序？**:需要使用序号，因为得到的是数组
+    - 对于函数，fn代表整个函数，而fn()代表函数的返回值
+    - 在js代码中属性名使用camel，属性值使用双引号括起来，属性名也是使用双引号，防止不
+    规范的写法
+    - DOM操作文档上元素的API BOM操作浏览器的API
+    ---
 - DOM：
-    - **创建标签怎么确定标签所放位置？**：
-        - 创建就是为了给插入、删除等事件做准备的
+    - 获取节点：
+        - `var a = document.getELementById(" ")`
+        - `document.getElementById(" ")`
+        - 通过访问关系获取节点
+    - 节点操作：
+        - 创建节点：
+            - **创建标签怎么确定标签所放位置？**：
+            - 创建就是为了给插入、删除等事件做准备的，暂时不用指定位置
+            - `var a = document.createElement(" ")   `
+        - 插入节点：`appendChild(), insertBefore()`
+        - 删除节点： `removeChild()`
+        - 复制节点： `cloneNode()**我不知道怎么使用**`
+        - 获取节点的属性： 
+            - `. `
+            - `[]`
+            - `getAttribute("属性名")`
+        - 设置节点属性：
+            - `. `
+            - `setAttribute("属性名","属性值")`
+        - 删除节点属性：`removeAttribute("AttrName")`
+    - 对象属性（节点属性）：
+        - `value` `innerHTML` `innerText`
+    - nodeType: 用于修改元素内容时判断类型的？
+    -  `window`属性：
+        - `onload`
+    - **绑定事件：**
+        - `.`
+        - 监听器`addElemetListener(事件，驱动程序，默认false冒泡)`
+        - 事件对象： 在驱动程序中会隐藏一个参数对象event  **隐藏对象就是window下的全局对象？**`event`下面有很多属性，很有用
+
     -  文本是标签的第一个子节点，在DOM树中显示
     - 使用 js 获取内联样式之外的样式（外部样式表）
         ```html
@@ -31,23 +60,34 @@
             
         </script>
         ```
-    - 绑定事件(事件捕获)有两种方法：`.` `addElementListener`(事件监听器)不会发生层叠
     - 事件对象 ： 在触发事件时自动生成的`event`包含了关于鼠标的信息
     - 事件捕获顺序：`window > document > html > body > 祖先 > 父亲 > 儿子`也就是说会按照这个顺序处理事件驱动程序
     - 事件冒泡，当一个元素的事件触发时，其父亲祖先都会触发事件，知道DOM树的最上层
     - 事件冒泡的顺序与事件捕获的顺序刚好相反 阻止冒泡：`event.stopPropagation() || event.canselBubble = true`
     - **事件委托我还没学？**
+    ---
 - BOM:`opean close location history navigator`
+    - `window`是顶级对象，所有的对象都在这里
+        - alert()
+        - open(url, target,param)param中有很多参数**用json写的？**
+        - close()
+    - `window.history`包含浏览器历史url的集合
+        - `back()`
+        - `forward()`
+        - `go()`
+    - `loaction`是关于当前页面url的对象，能够获得url的一些属性的对象以及方法
+        - **有很多属性，方法我都没有看**
+    - `navigator`获取客户端的信息
+    - `screen`获得关于用户当前屏幕相关的信息，例如宽高
+        - 属性：userAgent platform
+    - DOM是BOM中很大的对象`document`和上面的几个对象都是同一级别的
     - 构造函数： 使用`new`关键字和函数快速批量生产对象
     - **alert 与 throw区别？**
     - 在文档加载完成之后使用`document.write()`,会覆盖原来文档
     - 阻止事冒泡： 就是防止在点击最底层元素之后其祖先元素不断地接收响应
     - 计时器：`setInterval(function, time)  setTimeOut()`分别通过设置事件间隔和
     暂停事件来不断控制函数进行，而对应的停止是`stopInterval() clearTimeOut()`
-    - `window.history`包含浏览器历史url的集合`history.back()||forward()||go()`
-    - `loaction`是关于当前页面url的对象，能够获得url的一些属性的对象
-    - `screen`获得关于用户当前屏幕相关的信息，例如宽高
-- **构造函数中prototype什么意思？**
+    - **构造函数中prototype什么意思？**
     - 使用js模拟类的实现
     ```html
     <script>
@@ -84,9 +124,9 @@
         }
     </script>
     ```
-
-## 记录学习JavaScript的笔记（来源于JavaScript语法精髓）：
-- **原生链是什么？**好像往下看看也就简单理解了？
+---
+## 进阶JavaScript的笔记（来源于JavaScript语法精髓）：
+- **原型链是什么？**好像往下看看也就简单理解了？
 - **什么是反射我也没懂？**
 - 函数也是一个对象，所以他也有原型
 - 什么是匿名函数`anonymous`：
@@ -122,6 +162,10 @@
 - 递归非常高效的处理树型结构
 - JavaScript不支持尾递归（循环递归），深度递归会导致堆栈内存溢出而运行失败
 - 回调：同步请求使得网页在请求之后进入假死状体，使用异步请求会在请求到达服务器之后就能通过回调函数产生响应（**这就是骗人的响应？**）
+- 模块：**我并没有理解**
+    - 是一个提供接口但是隐藏状态和实现函数的对象
+    - 通过模块可以摒弃使用全局变
+- 级联：允许我们在一条语句中调用一个对象的多个方法
 
 ## 扎奇巴傻
 - 路由： 可以理解为url中网站域名后面的东西
