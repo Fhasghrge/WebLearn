@@ -1,5 +1,11 @@
 # AJAX_NOTE
 - 不是一种语言，只是XMLHttpRequest和JavaScript和DOM的组合
 - 同样可以使用XML传输数据,但是使用json更为常见
-##
 - 一切尽在后台，不重新加载页面，但是更新了网页
+- 属性：
+    - `open(method,url,async)`请求方法，地址，是否异步
+        - post 比 get 更加快捷简单，健壮安全
+        - url是一个地址，一个服务器上上面的文件
+    - `send()` used for GET
+    - `send(string)` used for POST
+    -

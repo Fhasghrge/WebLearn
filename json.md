@@ -84,7 +84,7 @@
     <script>
     obj = { "table":"customers", "limit":10 };
     dbParam = JSON.stringify(obj);
-    //以上是对于请求数据要求的模板
+    //以上是对于请求数据限制要求的模板
 
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
