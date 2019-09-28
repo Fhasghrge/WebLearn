@@ -13,7 +13,8 @@
             var myObj = JSON.parse(this.responseText);
 
             //除了这一句其他的都是模板
-            document.getElementById("demo").innerHTML = myObj.name;
+            document.getElementById("demo").innerHTML =
+             myObj.name;
 
         }
     };
@@ -27,7 +28,7 @@
         - open send onreadstatechange readState status responseText
     - 同源策略：为了安全，浏览器对资源共享有限制，这个策略就是要求后台的请求仅仅能要求来自同一域名的资源
 - 跨域资源共享：
-    - 实现跨站资源共享的关键是服务器，只要服务端实现了CORS接口，就可以实现跨源共享,意味着加载资源必须在同一台服务器上
+    - 实现跨站资源共享的关键是服务器，只要服务端实现了CORS接口，就可以实现跨源共享,意味着加载资源可以在不同的服务器上
 - JSON-P
     - 指的是带padding的json，利用了`<script>`标签不受同源策略的影响向不同域名的站点请求`JSON`，简单来说就是把请求json改成请求脚本文件，避开了同源策略
         ```javascript
@@ -55,9 +56,10 @@
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             myObj = JSON.parse(this.responseText);
-            document.getElementById("demo").innerHTML = myObj.name;
+            document.getElementById("demo").innerHTML = 
+            myObj.name;
         }
-        };
+    };
     xmlhttp.open("GET", "/demo/demo_php_json_encode.php", true);
     //这里还是获取PHP文件？
     xmlhttp.send();
@@ -68,14 +70,15 @@
     //对请求的内容加以限制
     obj = {"table":"customers", "limit":10};
     dbParam = JSON.stringify(obj);
+
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
         if(this.readystate ==4 && this.status == 200){
-            document.getElementById("demo").innerHTML = this.responseText;
+            document.getElementById("demo").innerHTML =
+             this.responseText;
         }
     }
     xmlhttp.open("GET","demo_json_db.php?x=" + dbParam, true);
-    //或者是xmlhttp.send("x=" + dbParam)
     xmlhttp.send(); //get不能send()不能有参数
     ```
 - 向服务器发送数据：

@@ -1,12 +1,7 @@
 # NOTE  (JavaScript)
 ## 语法知识的学习（来源于Github教程）
 - 大致概要：
-    - 事件的三要素： 事件源 + 事件 + 事件驱动程序
-    - **为什么用getElementsByClassName不能产生事件驱动程序？**:需要使用序号，因为得到的是数组
-    - 对于函数，fn代表整个函数，而fn()代表函数的返回值
-    - 在js代码中属性名使用camel，属性值使用双引号括起来，属性名也是使用双引号，防止不
-    规范的写法
-    - DOM操作文档上元素的API BOM操作浏览器的API
+    - 在js代码中属性名使用camel，属性值使用双引号括起来，属性名也是使用双引号，防止不规范的写法，导致数据交换的时候导致不兼容
     ---
 - DOM：
     - 获取节点：
@@ -20,8 +15,8 @@
             - `var a = document.createElement(" ")   `
         - 插入节点：`appendChild(), insertBefore()`
         - 删除节点： `removeChild()`
-        - 复制节点： `cloneNode()**我不知道怎么使用**`
-        - 获取节点的属性： 
+        - 复制节点： `cloneNode()` **我不知道怎么使用**
+        - 获取节点的属性：
             - `. `
             - `[]`
             - `getAttribute("属性名")`
@@ -37,10 +32,10 @@
     - **绑定事件：**
         - `.`
         - 监听器`addElemetListener(事件，驱动程序，默认false冒泡)`
-        - 事件对象： 在驱动程序中会隐藏一个参数对象event  **隐藏对象就是window下的全局对象？**`event`下面有很多属性，很有用
+        - 事件对象： 在驱动程序中会隐藏一个参数对象event  **隐藏对象就是window下的全局对象？**,其实不算隐藏的属性，window下的对象在哪里都可以用`event`下面有很多属性，很有用
 
-    -  文本是标签的第一个子节点，在DOM树中显示
-    - 使用 js 获取内联样式之外的样式（外部样式表）
+    - 文本是标签的第一个子节点，在DOM树中显示
+    - *使用 js 获取内联样式之外的样式（外部样式表）*
         ```html
         <script>
 
@@ -57,12 +52,12 @@
                 }
                 return ele.currentStyle[attr];
             }
-            
+
         </script>
         ```
     - 事件对象 ： 在触发事件时自动生成的`event`包含了关于鼠标的信息
     - 事件捕获顺序：`window > document > html > body > 祖先 > 父亲 > 儿子`也就是说会按照这个顺序处理事件驱动程序
-    - 事件冒泡，当一个元素的事件触发时，其父亲祖先都会触发事件，知道DOM树的最上层
+    - 事件冒泡，当一个元素的事件触发时，其父亲祖先都会触发事件，直到DOM树的最上层
     - 事件冒泡的顺序与事件捕获的顺序刚好相反 阻止冒泡：`event.stopPropagation() || event.canselBubble = true`
     - **事件委托我还没学？**
     - 以函数调用时，`this`指的是`window`，以方法形式调用时，`this`指的是方法的对象
@@ -70,7 +65,7 @@
 - BOM:`opean close location history navigator`
     - `window`是顶级对象，所有的对象都在这里
         - alert()
-        - open(url, target,param)param中有很多参数**用json写的？**
+        - open(url, target,param)param中有很多参数**用json写的？**和json的open不一样，这里是打开新的页面
         - close()
     - `window.history`包含浏览器历史url的集合
         - `back()`
@@ -85,46 +80,47 @@
     - 构造函数： 使用`new`关键字和函数快速批量生产对象
     - **alert 与 throw区别？**
     - 在文档加载完成之后使用`document.write()`,会覆盖原来文档
-    - 阻止事冒泡： 就是防止在点击最底层元素之后其祖先元素不断地接收响应
+    - 阻止事件冒泡： 就是防止在点击最底层元素之后其祖先元素不断地接收响应
     - 计时器：`setInterval(function, time)  setTimeOut()`分别通过设置事件间隔和
     暂停事件来不断控制函数进行，而对应的停止是`stopInterval() clearTimeOut()`
     - **构造函数中prototype什么意思？**
+        原型链
     - 使用js模拟类的实现
-    ```html
-    <script>
-        //使用js模拟类的实现
-        function Person(){  //定义一个空的构造函数
+        ```html
+        <script>
+            //使用js模拟类的实现
+            function Person(){  //定义一个空的构造函数
 
-        }
-        Person.prototype = {  //原生态，也就是类？反正就是这么用的
-            name: "zhangshuang",
-            age: 19,
-            eat: function(){
-                alert("chizhe")
             }
-        var zhang =new Person(); //构造函数使用
-        }
-    </script>
-    ```
+            Person.prototype = {  //原型链，也就是类？反正就是这么用的
+                name: "zhangshuang",
+                age: 19,
+                eat: function(){
+                    alert("chizhe")
+                }
+            var zhang =new Person(); //构造函数使用
+            }
+        </script>
+        ```
     - 继承：
-    ```html
-    <script>
-        function Person(){
+        ```html
+        <script>
+            function Person(){
 
-        }
-        Person.prototype.say = function(){
-            alert("oooo");
-        }
-        function Student(){
+            }
+            Person.prototype.say = function(){
+                alert("oooo");
+            }
+            function Student(){
 
-        }
-        Student.prototype = new Person();  //继承的过程，把原生类传递过去
-        var s = new Student();
-        Student.prototype.say = function(){     //对继承来的父类进行复写
-            alert("student-hello");
-        }
-    </script>
-    ```
+            }
+            Student.prototype = new Person();  //继承的过程，把原型链传递过去
+            var s = new Student();
+            Student.prototype.say = function(){     //对继承来的父类进行复写
+                alert("student-hello");
+            }
+        </script>
+        ```
 - 原型链
     - 构造函数
         - 实例：
@@ -143,7 +139,7 @@
         - `var a = {}`实际是`var a = new Object(){}`
         - `var a = []`实际是`var a = new Array(){}`
         - `function Foo(){...}`实际是`var Foo = new function(){...}`
-        - `instanceof`用来判断变量是否是构造函数 
+        - `instanceof`用来判断变量是否是构造函数
     - 原型规则：
         - 所有引用类型都有对象特性，都可以自由扩展属性
         - 所有的引用类型都有`_proto_`属性，其属性值是一个对象，含义是隐式原型
@@ -188,7 +184,7 @@
         //return this;
     }
     ```
-- 已经没有块作用域了，但是如果使用`let`任然会有块级作用域
+- 已经没有块作用域了版本修订的时候删除了，，但是如果使用`let`任然会有块级作用域
 - var定义的变量作用域在活动对象上，因此有闭包的存在，可以被接收，let定义的变量，作用域在代码块中
 - 作用域链：如果有多个嵌套的函数，就会形成作用域链
 - `call & apply`都用来改变`this`的指向第一个参数都是对象，显式绑定`this`，后面跟着实参，`apply`是需要使用数组进行封装实参的，实际上这两个方法就是为了对函数进行内部对象变相的构造以及传参？
@@ -198,7 +194,7 @@
 - 函数也是一个对象，所以他也有原型
 - 什么是匿名函数`anonymous`：
     ```html
-    <script>
+    <script>//函数表达式？
     var zhang = function(){ //通过匿名函数以函数返回值的形式赋值来构造函数
         alert("加油呀");
     }
@@ -224,7 +220,7 @@
     - 内存溢出：运行的内存超过了剩余的内存
     - 内存泄漏：占用内存没有及时释放
         - 常见的内存泄漏：意外全局变量，没有及时回收计时器或回调函数， 闭包
-    
+
 - 调用运算符是任何一个产生函数值的表达式之后的一对圆括号
 - 函数的实际参数过多过少都没有关系，过多会被忽略，过少会被`undeined`代替
 - JavaScript是`基于原型继承`的语言，而大多数主流语言是`基于类`的语言，然后**模拟了所谓的继承？**

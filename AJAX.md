@@ -7,7 +7,7 @@
         - post 比 get 更加快捷简单，健壮安全
         - url是一个地址，一个服务器上上面的文件
     - `send()` used for GET
-        - `send(string)` used for POST
+    - `send(string)` used for POST
     ```javascript
     <script>
     function loadXMLDoc() { //通过DOM绑定模板XMLHttpRequest函数
@@ -28,9 +28,11 @@
         var x = xmlDoc.getElementsByTagName("CD");
         for (i = 0; i <x.length; i++) {
             table += "<tr><td>" +
-            x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+            x[i].getElementsByTagName("ARTIST")[0].childNodes[0]
+            .nodeValue +
             "</td><td>" +
-            x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+            x[i].getElementsByTagName("TITLE")[0].childNodes[0]
+            .nodeValue +
             "</td></tr>";
         }
         document.getElementById("demo").innerHTML = table;
