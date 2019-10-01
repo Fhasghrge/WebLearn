@@ -1,23 +1,23 @@
-main axis
-cross axis
-flex item
-指定容器display:flex;
-那么容器里面的元素都可以使用flex布局：
-    flex容器属性:
-        flex-direction 决定主轴的方向
-        flex-wrap 决定容器的项目是否可以换行
-        justify-content 定义项目在主轴上的对齐方式
-        align-items 定义项目在交叉轴上的对齐方式
-        align-content 定义有多根轴线的对齐方式
-    flex项目属性：
-        order 定义项目在容器中的排序方式
-        flex-basis 定义在分配多余空间之前，项目占主轴的空间
-        flex-grow 定义项目的放大比例 默认值为 0
-        flex-shrink 定义项目缩小比例
-        align-self 允许单个项目有与其他项目不同的对齐方式
+- main axis
+- cross axis
+- flex item
+- 指定容器display:flex;
+- 那么容器里面的元素都可以使用flex布局：
+- flex容器属性:
+    - flex-direction 决定主轴的方向
+    - flex-wrap 决定容器的项目是否可以换行
+    - justify-content 定义项目在主轴上的对齐方式
+    - align-items 定义项目在交叉轴上的对齐方式
+    - align-content 定义有多根轴线的对齐方式
+- flex项目属性：
+    - order 定义项目在容器中的排序方式
+    - flex-basis 定义在分配多余空间之前，项目占主轴的空间
+    - flex-grow 定义项目的放大比例 默认值为 0
+    - flex-shrink 定义项目缩小比例
+    - align-self 允许单个项目有与其他项目不同的对齐方式
 
-对于不同的手机，页面的大小根据手机尺寸的大小决定选择vh 和vw；
-对于收到屏幕高度影响较大的部分用vh
+- 对于不同的手机，页面的大小根据手机尺寸的大小决定选择vh 和vw；
+- 对于收到屏幕高度影响较大的部分用vh
 对于受宽度影响较大的部分使用vw
 + 通过text-indent属性可以把文字赶到视野以外的地方
 + 文字在行高内自动垂直居中，也就是padding-top == padding-bottom，   这样设置文本在居中，可以设置文本行高是父元素的高度
