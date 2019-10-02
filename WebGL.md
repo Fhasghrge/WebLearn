@@ -1,8 +1,8 @@
 ```javascript
-var scene = new THREE.Scene();  // 场景
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);// 透视相机
-var renderer = new THREE.WebGLRenderer();   // 渲染器
-renderer.setSize(window.innerWidth, window.innerHeight);    // 设置渲染器的大小为窗口的内宽度，也就是内容区的宽度
+var scene = new THREE.Scene();//场景
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth, window.innerHeight, 0.1, 1000);//透视相机
+var renderer = new THREE.WebGLRenderer();//渲染器
+renderer.setSize(window.innerWidth, window.innerHeight);//设置渲染器的大小为窗口的内宽度，也就是内容区的宽度
 document.body.appendChild(renderer.domElement);
 ```
 ## 准备操作：
@@ -152,9 +152,30 @@ document.body.appendChild(renderer.domElement);
     - var light = new THREE.Light(0xFF0000);定义不同颜色的光源，这是其他光源的基类
     - 环境光：THREE.AmbientLight
         - 多次反射得到的光被称为环境光，无处不在的光，没有敏感区分
+        - 环境光的位置对于物体的观察并没有太大影响，这是让物体均匀发光的光
     - 点光源：THREE.PointLight(color, intensity, distance)
         - intensity:默认1.0,就是100%的光强度
         - distance:在这段距离内光强度逐渐从intensity减弱到0
     - 聚光灯：THREE.SpotLight(hex,intensity,distance,angle,expoent)
         - angle聚光灯着色角度，？？？
         - expoent衰减参数，越大衰减的越快
+    - 方向光（平行光）THREE.DirectionalLight(hex, intensity)
+        - 平行光的方向由光源方向和原点方向决定
+    - 光源的叠加：
+        - 就是实际光源的叠加
+    - 没有任何光源的物体是黑色的
+- 材质：
+    - Lambert
+        - 粗糙不均匀，没有镜面反射，表面均匀的散射光
+        - 颜色收到环境光的影响，材料本身的颜色并没有太大影响
+- 纹理：
+    - 纹理就是贴图
+    ```javascript
+    THREE.Texture( image, mapping, wrapS, wrapT, magFilter,
+             minFilter, format, type, anisotropy )
+    ```
+    - JavaScript没有权限从本地加载图片，必须使用http，
+        ```javascript
+        var image = THREE.ImageUtils.loadTexcure(url);
+        ```
+    - 贴图当作material属性中map的值使用
