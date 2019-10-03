@@ -1,11 +1,37 @@
 <!-- 来自阮一峰的ECMAScript入门 -->
-- 变量提升只是声明被提升了，赋值没有提升，使用let关键字可以解决这个问题
-- 暂时性死区(temporal dead zone)：在块级作用域中let const声明的关键字会在变量声明之前的区域形成一个封闭性的死区，即使全局中已经声明这个变量也会报错
+- let & const
+    - for循环中，设置循环变量实际上是在父作用域，循环体内部是在子作用域
+    - 凡是在let之前使用没有声明的变量都会报错，即使是多次声明变量也是以最后一个声明为准，这就是temporal dead zone
+    - 变量提升只是声明被提升了，赋值没有提升，使用let关键字可以解决这个问题 => 没有提升
+    - ES5只有全局作用域和函数作用域，而且if 和 for 语句中的变量容易泄露成全局变量
+    - 块级作用域的出现使得匿名立即执行函数表达式没有必要了
+    - ES6允许在块级作用域中声明函数
+    - const 在声明时就必须赋值
+    - ES6声明的变量let const class 从此与顶层对象脱钩
+        ```javascript
+        var a = 1;
+        window.a //1
+        let b = 2;
+        window.b//undefined
+        ```
 - 解构赋值
     - 只要等号两边模式相同，右边的值就会赋值给相应的变量
     - [a,b] = [1,2];
     - [a, b, c] = "123";
     - ({a, b} = {a : 1, b : 2});**对象赋值进行匹配**
+    - 如果等号右边不是可以遍历的结构就不会解构，或者说等号右边转换为对象之后不具有Iterator接口，可以遍历的结构：数组
+    - 对象的解构赋值：
+        - 采用的是对象的属性名对应的赋值，与次序无关
+        - 可以把对象中的方法对应到自定义中，很方便
+            ```javascript
+            let {cos, sin, log} = Math;
+            console.log(cos(Math.PI))
+            ```
+        - 如果变量名和属性值不一样：其实这才是真正的对象解构赋值，常用的那个只是简写
+        ```javascript
+        let object = {first: zhang, second: shuang}
+        let {first: f, second: s} = object
+        ```
 - rest参数
     ```javascript
     function sum(...c){
@@ -137,25 +163,25 @@
         console.log(shuang)//Map {  }
         ```
         - 添加用set 获取用get
-            ```
+        ```
 - 类
     ```javascript
     class human{
-    constructor(name, age){ //构造器
-        this.name = name;
-        this.age = age;
-    }
-    run(){
-        console.log("我在跑步")
-    }
+        constructor(name, age){ //构造器
+            this.name = name;
+            this.age = age;
+        }
+        run(){
+            console.log("我在跑步")
+        }
     }
     let zhang = new human('zhangShuang', 19)
-    zhang.run()
+    zhang.run()//我在跑步
 
     class father extends human{//类的继承
     }
     let ss = new father("ss", 4);
-    ss.run();
+    ss.run();//我在跑步
 
     class son extends human{
         constructor(name, age){

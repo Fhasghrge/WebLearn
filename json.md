@@ -13,9 +13,7 @@
             var myObj = JSON.parse(this.responseText);
 
             //除了这一句其他的都是模板
-            document.getElementById("demo").innerHTML =
-             myObj.name;
-
+            document.getElementById("demo").innerHTML = myObj.name;
         }
     };
     xmlhttp.open("GET", "/example/json/json_demo.txt", true);
@@ -38,7 +36,7 @@
         script.src = "http://notarealdomain.com/animal.json";
         document.getElementByTagName("head")[0].appendChild(scrip）;
         ```
-- 接收数据： 通过parse()方法对传输的数据进行解析，然后通过DOM实现显示
+- 接收数据： 通过parse()方法对传输的数据进行解析，转换成对象，然后通过DOM实现显示
 - 存储数据：把json文件转换成文本文件stringify()方法转换，用localStorage.setItem()方法保存，通过localStorage.getItem()从存储中读取数据；
 - parse()函数：
     - 解析传输的JSON,参数1：json
@@ -56,8 +54,7 @@
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             myObj = JSON.parse(this.responseText);
-            document.getElementById("demo").innerHTML = 
-            myObj.name;
+            document.getElementById("demo").innerHTML = myObj.name;
         }
     };
     xmlhttp.open("GET", "/demo/demo_php_json_encode.php", true);
@@ -74,8 +71,7 @@
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
         if(this.readystate ==4 && this.status == 200){
-            document.getElementById("demo").innerHTML =
-             this.responseText;
+            document.getElementById("demo").innerHTML = this.responseText;
         }
     }
     xmlhttp.open("GET","demo_json_db.php?x=" + dbParam, true);
