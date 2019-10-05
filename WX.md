@@ -1,0 +1,10 @@
+- json在小程序中扮演着静态配置的角色
+    - app.json => 全局配置
+        - 包括页面路径，界面表现，网络超时时间，底部tab
+    - project.config.json => 工具配置
+        - 包括编辑器的颜色，上传时自动压缩
+    - page.json => 页面相关的配置
+- WXSS样式
+    - app.wxss对所有页面生效
+    - page.wxss仅对当前也买你生效
+    - 支持部分CSS选择器
