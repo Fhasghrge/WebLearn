@@ -27,4 +27,4 @@
 + 工程上，常常使用`父相子绝`父亲脱标，儿子没有脱标在父亲的范围内移动
 + 绝对定位儿子忽视父亲的`padding`以`border`的左上角为参考点
 + 浮动元素不能使用`z-index`,只有定位(三种)了的盒子才能使用`z-index`
-
+- box-sizing = border-box;可以消除boder以及padding对元素长度的印象，全部在boder里面来描述
