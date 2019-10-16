@@ -11,7 +11,7 @@
 ## 内元件属性
 
 -   flex
-    -   flex-grow 预计伸展值
+    -   flex-grow 预计伸展值 //到底怎么用？
     -   flex-shrink 预计收缩值
     -   flex-basis 元件基准值
 -   order 排序

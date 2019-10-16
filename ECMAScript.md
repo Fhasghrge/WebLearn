@@ -4,7 +4,7 @@
     - 凡是在let之前使用没有声明的变量都会报错，即使是多次声明变量也是以最后一个声明为准，这就是temporal dead zone
     - 变量提升只是声明被提升了，赋值没有提升，使用let关键字可以解决这个问题 => 没有提升
     - ES5只有全局作用域和函数作用域，而且if 和 for 语句中的变量容易泄露成全局变量
-    - 块级作用域的出现使得匿名立即执行函数表达式没有必要了
+    - 块级作用域的出现使得匿名立即执行函数表达式没有必要了，以前这个就是为了防止全局变量过多造成不必要的麻烦
     - ES6允许在块级作用域中声明函数
     - const 在声明时就必须赋值
     - ES6声明的变量let const class 从此与顶层对象脱钩
@@ -78,9 +78,9 @@
     ```
     ```javascript
     let zhang = {
-    sayHello(){ //对象中方法的简写
-        console.log("hello world");
-    },
+        sayHello(){ //对象中方法的简写
+            console.log("hello world");
+        },
     }
     zhang.sayHello();//hello world
     ```
@@ -103,11 +103,10 @@
     console.log( zhang(3, 4) )//12
     ```
     - 如果直接返回一个对象，需要把对象用（）括起来，以免产生歧义
+    - 在vue中某些地方不支持箭头函数
 - 数值：
      - isFinite判断数值是否有界
      ```javascript
-    console.log(Number.isFinite(NaN))//false
-    console.log(Number.isNaN(NaN)) //true
     console.log(Number.isInteger("d"))//false
     console.log(Math.cbrt(8))//2
     console.log(Number.MAX_SAFE_INTEGER)//9007199254740991
