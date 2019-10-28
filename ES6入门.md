@@ -1,39 +1,115 @@
 <!-- 来自阮一峰的ECMAScript入门 -->
-- let & const
-    - for循环中，设置循环变量实际上是在父作用域，循环体内部是在子作用域
-    - 凡是在let之前使用没有声明的变量都会报错，即使是多次声明变量也是以最后一个声明为准，这就是temporal dead zone
-    - 变量提升只是声明被提升了，赋值没有提升，使用let关键字可以解决这个问题 => 没有提升
-    - ES5只有全局作用域和函数作用域，而且if 和 for 语句中的变量容易泄露成全局变量
-    - 块级作用域的出现使得匿名立即执行函数表达式没有必要了，以前这个就是为了防止全局变量过多造成不必要的麻烦
-    - ES6允许在块级作用域中声明函数
-    - const 在声明时就必须赋值
-    - ES6声明的变量let const class 从此与顶层对象脱钩
+## let & const
+- for循环中，设置循环变量实际上是在父作用域，循环体内部是在子作用域
+- 凡是在let之前使用没有声明的变量都会报错，即使是多次声明变量也是以最后一个声明为准，这就是temporal dead zone
+- 变量提升只是声明被提升了，赋值没有提升，使用let关键字可以解决这个问题 => 没有提升
+- ES5只有全局作用域和函数作用域，而且if 和 for 语句中的变量容易泄露成全局变量
+- 块级作用域的出现使得**匿名立即执行函数表达式**没有必要了，以前这个就是为了防止全局变量过多造成不必要的麻烦
+- ES6允许在块级作用域中声明函数
+- const 在声明时就必须赋值
+- ES6声明的变量let const class 从此与顶层对象脱钩
+    ```javascript
+    var a = 1;
+    window.a //1
+    let b = 2;
+    window.b//undefined
+    ```
+## 解构赋值
+#### 前言：
+- 只要等号两边模式相同，右边的值就会赋值给相应的变量
+- 如果等号右边不是可以遍历的结构就不会解构，或者说等号右边转换为对象之后不具有Iterator接口，可以遍历的结构：数组，字符串，Set，NodeList对象
+#### 1 数组结构赋值
+- [a,b] = [1,2];
+- [a, b, c] = "123";
+- 默认值，放在等号前面
+- 表达式具有惰性求值的，只有用到才会求值
+#### 2 对象的结构赋值
+- ({a, b} = {a : 1, b : 2});**对象赋值进行匹配**
+- 对象的解构赋值：
+    - 采用的是对象的属性名对应的赋值，与次序无关
+    - 真正复制的是后面的值，而不是前面的属性，前面的属性只是用来匹配
+    - 可以把对象中的方法对应到自定义中，很方便
         ```javascript
-        var a = 1;
-        window.a //1
-        let b = 2;
-        window.b//undefined
+        let {cos, sin, log} = Math;
+        console.log(cos(Math.PI))
         ```
-- 解构赋值
-    - 只要等号两边模式相同，右边的值就会赋值给相应的变量
-    - [a,b] = [1,2];
-    - [a, b, c] = "123";
-    - ({a, b} = {a : 1, b : 2});**对象赋值进行匹配**
-    - 如果等号右边不是可以遍历的结构就不会解构，或者说等号右边转换为对象之后不具有Iterator接口，可以遍历的结构：数组，字符串，Set，NodeList对象
-    - 对象的解构赋值：
-        - 采用的是对象的属性名对应的赋值，与次序无关
-        - 可以把对象中的方法对应到自定义中，很方便
-            ```javascript
-            let {cos, sin, log} = Math;
-            console.log(cos(Math.PI))
-            ```
-        - 如果变量名和属性值不一样：其实这才是真正的对象解构赋值，常用的那个只是简写
-        ```javascript
-        let object = {first: zhang, second: shuang}
-        let {first: f, second: s} = object
-        ```
-    - 数组是一种虚假对象？ 为什么它们都有keys，keys就是索引值
-- rest参数
+    - 也可以有默认值，没有解构赋值的返回时`undefined`，null即使是空指针也是*对象*
+#### 注意：
+- 对于一个已经声明的变量进行解构赋值要小心，因为大括号放在行首容易被JavaScript解释为代码块，这是可以使用`()`包裹起来解决这个问题
+- 数组的本质时特殊的对象，所以可以用数组对对象属性进行赋值
+#### 3 字符串的解构解析
+- 字符串可以转化成类似于数组的对象
+#### 4 数值和布尔值的解构赋值
+- 如果等号右边是数值或者布尔值，则转换为对象
+#### 5 函数参数的解构赋值
+- 直接向函数参数里面传入可以在传入参数的一刻转换成函数常规参数
+- 函数的参数也可以有默认值
+    ```javascript
+    function move({x = 0, y = 0} = {}) {
+        return [x, y];
+    }
+    move({x: 3, y: 8}); // [3, 8]
+    move({x: 3}); // [3, 0]
+    move({}); // [0, 0]
+    move(); // [0, 0]
+    ```
+- undefined会触发函数参数的默认值
+#### 6 圆括号问题
+- 不能使用圆括号的情况
+    - 变量声明语句
+    - 函数参数
+    - 赋值语句的模式
+- 可以使用圆括号的情况
+    - 赋值语句和非模式语句 
+#### **7 用途**
+- 交换变量的值
+- 函数中返回多个值
+- 函数参数定义
+- **提取JSON数据**（通过属性名快速提取数据）
+- 函数参数的默认值
+- **遍历Map结构**
+    - 任何部署了迭代器接口的对象，都可以通过`for...of`循环遍历
+    ```javascript
+    for(let [key,value] of map){
+        //dosomething
+    }
+    for(let [key] of map){
+
+    }
+    for(let [,value] of map){
+
+    }
+    ```
+- 输入模块的指定方法
+## 字符串扩展
+- 字符的Unicode表示法：
+    - 允许\uxxxx表示一个字符
+    - 超出
+    - 用大括号
+- 字符串的遍历器接口
+    - 为字符串添加了遍历接口
+    - 能识别传统for循环无法识别的码点
+- 直接输入U+2028 和 U+2029
+    - JavaScript 字符串允许直接输入字符，以及输入字符的转义形式。
+    - 字符串中不能包含反斜杠，一定要转义为\\或者\u005c
+- JSON.stringify()的改造
+- 字符串模板
+```javascript
+let name = "zhangShuang";
+let age = 19;
+let zhang = `我叫${name},我今年${age}岁了`
+console.log(zhang)//我叫zhangShuang,我今年19岁了 
+```
+```javascript
+let zhang = "shuang"
+console.log(zhang.includes("ang"))
+console.log(zhang.startsWith("shua"))
+console.log(zhang.endsWith("ang"))
+console.log(zhang.repeat(5));
+```
+- 实例：模板编译
+
+## rest参数
     ```javascript
     function sum(...c){
     let m = 0;
@@ -53,21 +129,6 @@
     let a, b;
     [a, ...b] = "1234567890"
     console.log(a, b)//1 [ '2', '3', '4', '5', '6', '7', '8', '9', '0' ] 
-    ```
-- 字符串扩展
-    - 字符串模板
-    ```javascript
-    let name = "zhangShuang";
-    let age = 19;
-    let zhang = `我叫${name},我今年${age}岁了`
-    console.log(zhang)//我叫zhangShuang,我今年19岁了 
-    ```
-    ```javascript
-    let zhang = "shuang"
-    console.log(zhang.includes("ang"))
-    console.log(zhang.startsWith("shua"))
-    console.log(zhang.endsWith("ang"))
-    console.log(zhang.repeat(5));
     ```
 - 对象扩展：
     ```javascript
