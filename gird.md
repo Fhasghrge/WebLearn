@@ -4,8 +4,6 @@
 - 默认容器元素都是块级元素，也可以设置为行内元素
     - display: inline-grid
 #### grid-template-columns/grid-template-rows属性
-- columns定义每一列宽
-- rows定义每一行高
 - 代码实例：
     ```css
     .container {
@@ -14,7 +12,6 @@
         grid-template-rows: 100px 100px 100px;
     }
     ```
-- 也可以使用百分比
 - repeat()函数，参数：重复的数量，重复的值（可以是多个模式)
 - auto-fill关键字
     - repeat的第一个参数，表示尽可能多的填充容器
