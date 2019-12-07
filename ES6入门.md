@@ -107,7 +107,29 @@ console.log(zhang.startsWith("shua"))
 console.log(zhang.endsWith("ang"))
 console.log(zhang.repeat(5));
 ```
-- 实例：模板编译
+## promise
+- ajax请求的顺序是不确定的，通过回调函数来确定请求的顺序
+- 通过axios请求的then => return => then不断调用后面的请求
+    ```javascript
+        const p = new Promise((resolve, reject)=>{
+            //成功就用resolve返回成功的信息，失败就用reject返回失败的信息
+            // resolve('zhang shuang is awesome!')
+            setTimeout(() => {
+                reject("zhang shuang is\'t awesome !")
+            }, 2000);
+        });
+        p.then(data => {
+            console.log(data)
+        }).catch(err =>{
+            console.log(err);
+        })
+    ```
+- 
+## 实例：模板编译
+- 模板字符串使用反引号以及${}，通常用在框架中用来构建组件
+- 模板字符串可以调用函数以及变量
+-  ` 标签模板字符串`可以返回（处理字符串）
+![]()
 
 ## rest参数
     ```javascript
@@ -165,6 +187,9 @@ console.log(zhang.repeat(5));
     ```
     - 如果直接返回一个对象，需要把对象用（）括起来，以免产生歧义
     - 在vue中某些地方不支持箭头函数
+- 回调函数中的this值指向global，使用箭头函数可以避免这个问题，this值指向的是父作用域
+- 回调函数时独立函数，独立函数的this指向的时全局变量
+- 箭头函数不存在this值的绑定，this指向global，箭头函数没有argument对象
 - 数值：
      - isFinite判断数值是否有界
      ```javascript
@@ -324,3 +349,8 @@ console.log(zhang.repeat(5));
 ## 表单输入绑定
 #### 基础用法
 - 文本
+- foreach不能break，continue
+- for in 循环遍历的是数组的索引值
+- for of 循环遍历的是数组中的value，并且可以使用continue和break,适用的数据结构是部署了iterator接口的结构、
+- 扩展运算符，把数组的[]去掉
+- 对象属性名和对象方法的简写，计算属性

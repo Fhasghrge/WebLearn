@@ -1,0 +1,3 @@
+- 再package中使用'script'字段定义脚本命令
+    - 使用node run 执行脚本命令
+    - node_modules/.bin中所有的脚本都可以直接调用

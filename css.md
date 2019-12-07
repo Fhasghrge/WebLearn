@@ -22,3 +22,162 @@
 + 绝对定位儿子忽视父亲的`padding`以`border`的左上角为参考点
 + 浮动元素不能使用`z-index`,只有定位(三种)了的盒子才能使用`z-index`
 - box-sizing = border-box;可以消除boder以及padding对元素长度的印象，全部在boder里面来描述
+***
+***
+***
+
+# CSS3
+### 边框
+- box-shadow
+```css
+    /* x偏移量 | y偏移量 | 阴影颜色 */
+    box-shadow: 60px -16px teal;
+
+    /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影颜色 */
+    box-shadow: 10px 5px 5px black;
+
+    /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+    /* 插页(阴影向内) | x偏移量 | y偏移量 | 阴影颜色 */
+    box-shadow: inset 5em 1em gold;
+
+    /* 任意数量的阴影，以逗号分隔 */
+    box-shadow: 3px 3px red, -1em 0 0.4em olive;
+
+    /* 全局关键字 */
+    box-shadow: inherit;
+    box-shadow: initial;
+    box-shadow: unset;
+```
+- box-image
+<!-- 演示失败 -->
+### 背景
+- background-size
+    - cover：此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小。
+    - contain：此时会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。
+- background-origin
+    - border-box
+    - padding-box
+    - content-box
+- background-clip
+    - border-box
+    - padding-box
+    - content-box
+### 文本效果
+- text-shadow
+    ```css
+    /* offset-x | offset-y | blur-radius | color */
+    text-shadow: 1px 1px 2px black; 
+
+    /* color | offset-x | offset-y | blur-radius */
+    text-shadow: #fc0 1px 0 10px; 
+
+    /* offset-x | offset-y | color */
+    text-shadow: 5px 5px #558abb;
+
+    /* color | offset-x | offset-y */
+    text-shadow: white 2px 5px;
+
+    /* offset-x | offset-y
+    /* Use defaults for color and blur-radius */
+    text-shadow: 5px 10px;
+    ```
+- overflow-wrap
+    - normal 正常单词结束处换行
+    - break-word 表示如果行内没有多余的地方容纳该单词到结尾，则那些正常的不能被分割的单词会被强制分割换行。
+### 字体
+- @font-face
+    - 事先指定好引用的字体
+    ```css
+    @font-face
+    {
+    font-family: myFirstFont;
+    src: url('Sansation_Light.ttf'),
+        url('Sansation_Light.eot'); /* IE9+ */
+    }
+
+    div
+    {
+    font-family:myFirstFont;
+    }
+    ```
+***
+***
+## 动画
+### 转化属性
+- transform
+    - none | transform-functions
+- transform-origin
+    - 设置元素旋转的基点
+    - x-axis,y-axis,z-axis
+    - 单位以及关键字查阅文档
+- transform-style
+    - flat 子元素不保留3d位置
+    - preserve-3d 子元素保留3d位置（也就是有遮挡关系）
+- perspective
+    - 指定观察者与z=0平面的距离，透视深度
+- perspective-origin
+    - 指定观察者的位置
+- backface-visibility
+    - 定义当元素不面向屏幕时是否可见
+### 2D转换
+- **前面都要加上`transform:`**
+- translate()方法
+    - 参数left, top
+- rotate()
+    - 指定顺时针旋转的角度
+    - 单位是deg
+- scale()
+    - 指定width, height缩放的倍数
+- skew()
+    - 指定相对于x轴，y轴旋转的角度
+    - 单位deg
+- matrix()
+    - 把所有的2D转换方法结合在一起
+### 3D转换
+- translate3d(x,y,z)
+- rotate3d(x,y,z,angle)
+- scale3d(x,y,z)
+- matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)
+- perspective(n)
+### 过渡
+- transition 以下的简写
+- transition-property
+- transition-duration
+- transition-timing-functuon
+- transition-delay
+### 动画
+- 动画属性
+    - @keyframes规定动画
+    - animation
+        - 所有动画属性的简写属性
+    - animation-name
+        - 规定@keyframes动画的名称
+    - animation-duration
+    - animation-timing-function
+    - animation-delay
+    - animation-iteration-count
+    - animation-direction
+        - normal | alternate动画应该轮流反向播放
+    - animation-play-state
+        - paused | running规定动画是否暂停
+    - animation-fill-mode
+- @keyframes规则
+    - from = 0% to = 100%
+    - 百分比规定变化发生时间
+ ### 多列
+ - column-count
+    - 规定元素应该分割的列数
+ - column-gap
+    - 规定列之间的间隔
+ - column-rule
+    - 设置列之间的宽度、样式和颜色规则
+### 用户界面
+- resize
+    - 允许控制一个元素可调整大小性
+- box-sizing
+    - 规定如何计算一个元素的大小
+    - content-box（border会加到外面） | border-box（border加到内部）
+- outline-offset
+    - 设置 outline 与一个元素边缘或边框之间的间隙
