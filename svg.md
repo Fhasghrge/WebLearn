@@ -10,13 +10,13 @@
 
 - viewBox属性： 左上角的横纵坐标，视口的宽度和高度
 - 所有的url都通过`#id`的形式
-##### `<circle>`标签
+##### `<circle>`
 - 位置，半径，填充色，描边色，边框宽度
-#### `<line>`标签
-- 可以定义起点，终点，粗细
-#### `<polyline>`标签
-- 折线，定义折线的每个折点的坐标，填充，颜色
-#### `<rect>`标签
+#### `<line>`
+- 起点，终点，粗细
+#### `<polyline>`
+- 折线，折点的坐标，填充，颜色
+#### `<rect>`
 - 矩形，位置，长宽，描边色，填充色
 #### `<ellipse>`
 - 椭圆，位置，横纵轴半径，描边色，描边宽度，填充色
@@ -45,6 +45,20 @@
 - 对css属性起作用的动画
 - 开始的时间，持续时间，
 ### JavaScript操作
+
+#### DOM操作
+
+- svg以及svg内嵌标签都可以使用DOM或者CSS设置属性
+#### 获取SVG DOM
+- 使用<object>、<iframe>、<embed>标签插入 SVG 文件，可以获取 SVG DOM，但是通过<image>插入的SVG文件无法获取SVG DOM
+#### 读取SVG源码
+- 通过XMLSerilalizer实例的serialzeToString()方法获取SVG元素的源码
+```javascrip
+var svgString = new XMLSerializer()
+  .serializeToString(document.querySelector('svg'));
+```
+#### SVG图像转换成Canvas图像
+- 首先把SVG图像指定到image元素上，然后把image绘制到Canvas
 
 ### 实例
 
