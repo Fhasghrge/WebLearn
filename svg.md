@@ -50,7 +50,7 @@
 
 - svg以及svg内嵌标签都可以使用DOM或者CSS设置属性
 #### 获取SVG DOM
-- 使用<object>、<iframe>、<embed>标签插入 SVG 文件，可以获取 SVG DOM，但是通过<image>插入的SVG文件无法获取SVG DOM
+- 使用`<object>`、`<iframe>`、`<embed>`标签插入 SVG 文件，可以获取 SVG DOM，但是通过`<image>`插入的SVG文件无法获取SVG DOM
 #### 读取SVG源码
 - 通过XMLSerilalizer实例的serialzeToString()方法获取SVG元素的源码
 ```javascrip
