@@ -45,3 +45,48 @@
 - 构造器函数`_init_`以及对象方法的默认参数
 - 对于对象中的私有方法和私有属性，可以通过前置两个下划线表明`__`
 - 大多数Python程序员会遵循一种命名惯例就是让属性名以单下划线开头来表示属性是受保护的
+## 面向对象进阶
+- @property装饰器
+  - 可以定义访问器和修改器
+  - `@property`访问器方法
+  - `@age.setter`修改器方法(age)
+- _slots_黑魔法
+  - 限定自定义类型的对象只能绑定某些属性，可以通过在类中定义\_\_slots\_\_变量来进行限定(原来的对象是动态的，可以自由的添加和解绑)
+  ```python
+  _slots_ = ('_name', '_age', '_gender')
+  ```
+- 静态方法和类方法
+  - 静态方法使用@staticmethod标识
+  - 类方法使用@classmethod标识，第一个参数默认为cls(代表当前类相关信息的对象)
+- 类之间的关系
+  - is-a关系也叫继承或泛化
+  - has-a关系通常称之为关联
+    - 如果是整体和部分的关联，那么我们称之为聚合关系
+    - 整体进一步负责了部分的生命周期，那么这种就是最强的关联关系，我们称之为合成关系
+  - use-a关系通常称之为依赖
+- 继承和多态
+```python
+
+class Teacher(Person):
+
+    def __init__(self, name, age, title):
+        super().__init__(name, age)
+        self._title = title
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        self._title = title
+
+    def teach(self, course):
+        print('%s%s正在讲%s.' % (self._name, self._title, course))
+```
+- 子类在继承了父类的方法后，可以对父类已有的方法给出新的实现版本，这个动作称之为方法重写（override）
+- 当我们调用这个经过子类重写的方法时，不同的子类对象会表现出不同的行为，这个就是多态（poly-morphism）
+- 顶级父类从Object那里继承来
+- 抽象类就是不能够创建对象的类，这种类的存在就是专门为了让其他类去继承它
+- 通过`abc`模块的`ABCMeta`元类和`abstractmethod`包装器来达到抽象类的效果
+- 抽象方法使用abstractmethod(来自abc 模块)， 父类使用`metaclass=ABCMeta`标记实现抽象类的效果，抽象方法使用`pass`（干嘛用的？），但是再子类中要具体化抽象方法
