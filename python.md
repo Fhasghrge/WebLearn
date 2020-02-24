@@ -90,3 +90,36 @@ class Teacher(Person):
 - 抽象类就是不能够创建对象的类，这种类的存在就是专门为了让其他类去继承它
 - 通过`abc`模块的`ABCMeta`元类和`abstractmethod`包装器来达到抽象类的效果
 - 抽象方法使用abstractmethod(来自abc 模块)， 父类使用`metaclass=ABCMeta`标记实现抽象类的效果，抽象方法使用`pass`（干嘛用的？），但是再子类中要具体化抽象方法
+## 图形用户界面和游戏开发
+- 忽略
+## 文件和异常
+#### 读写文本文件
+```PYTHON
+f = open('致橡树.txt', 'r', encoding='utf-8')
+    print(f.read())
+    f.close()
+with open('致橡树.txt', mode='r') as f:
+        for line in f:
+            print(line, end='')
+            time.sleep(0.5)
+    print()
+
+    # 读取文件按行读取到列表中
+    with open('致橡树.txt') as f:
+        lines = f.readlines()
+    print(lines)
+    
+```
+- 错误情况：
+  - `FileNotFoundError`无法打开指定文件
+  - `LookupError`指定了未知编码
+  - `UnicodeDecodeError`读取文件时解码错误
+- 通过for逐行读取或者通过f.readlines()读取
+- 读取二进制文件
+  - 'rb'可以连着写
+- 读取json文件
+  - 使用Python中的json模块就可以将字典或列表以JSON格式保存到文件中
+  - `dump` - 将Python对象按照JSON格式序列化到文件中
+  - `dumps` - 将Python对象处理成JSON格式的字符串
+  - `load` - 将文件中的JSON数据反序列化成对象
+  - `loads` - 将字符串的内容反序列化成Python对象
