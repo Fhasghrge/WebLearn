@@ -123,3 +123,5 @@ with open('致橡树.txt', mode='r') as f:
   - `dumps` - 将Python对象处理成JSON格式的字符串
   - `load` - 将文件中的JSON数据反序列化成对象
   - `loads` - 将字符串的内容反序列化成Python对象
+  - 序列化的概念： 将数据结构或对象状态转换为可以存储或传输的形式
+  - 反序列化： 一系列字节中提取数据结构的操作，就是反序列化（deserialization）
