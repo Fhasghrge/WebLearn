@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas</title>
+  </head>
+  <body>
+    <canvas id="demo" width="600" height="600">
+      <!-- 不要通过css设置canvas的宽高 -->
+      你的浏览器不支持CANVAS
+    </canvas>
+    <script>
+      (function() {
+        /** @type {HTMLCanvasElement} */
+
+        let canvas = document.getElementById('demo');
+        let ctx = canvas.getContext('2d');
+        ctx.moveTo(100, 100);
+        ctx.lineTo(200, 100);
+        ctx.lineTo(100, 200);
+        ctx.closePath();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = 'red';
+        ctx.stroke();
+        ctx.fill(); // 填充之后边框的宽度变小，一般靠外一般靠内
+      }) ();
+    </script>
+  </body>
+</html>
