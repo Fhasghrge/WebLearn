@@ -16,14 +16,12 @@
 
         let canvas = document.getElementById('demo');
         let ctx = canvas.getContext('2d');
-        ctx.moveTo(100, 100);
-        ctx.lineTo(200, 100);
-        ctx.lineTo(100, 200);
-        ctx.closePath();
-        ctx.lineWidth = 4;
-        ctx.strokeStyle = 'red';
-        ctx.stroke();
-        ctx.fill(); // 填充之后边框的宽度变小，一般靠外一般靠内
+        canvas.style.border = '1px solid #000'
+        ctx.moveTo(300, 300)
+        ctx.arc(300, 300, 100, 0*Math.PI /180, 300*Math.PI /180, true)
+        ctx.closePath()
+        ctx.fill()
+        ctx.stroke()
       }) ();
     </script>
   </body>
