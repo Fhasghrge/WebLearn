@@ -187,3 +187,16 @@ if __name__ == '__main__':
 ### 基于传输层协议的套接字编程
 - 套接字就是一套用C语言写成的应用程序开发库，主要用于实现进程间通信和网络编程
 #### 自动邮件，自动短信
+
+## Linux操作系统
+- 一个操作系统要负责任务调度，内存分配，处理外围设备I/O等操作
+- 操作系统通常由内核（运行其他程序，管理像磁盘、打印机等硬件设备的核心程序）和系统程序（设备驱动、底层库、shell、服务程序等）两部分组成
+- `cd`命令后面可以跟相对路径（以当前路径作为参照）或绝对路径（以`/`开头）来切换到指定的目录
+#### yum
+- `yum search`：搜索软件包，例如`yum search nginx`。
+- `yum list installed`：列出已经安装的软件包，例如`yum list installed | grep zlib`。
+- `yum install`：安装软件包，例如`yum install nginx`。
+- `yum remove`：删除软件包，例如`yum remove nginx`。
+- `yum update`：更新软件包，例如`yum update`可以更新所有软件包，而`yum update tar`只会更新tar。
+- `yum check-update`：检查有哪些可以更新的软件包。
+- `yum info`：显示软件包的相关信息，例如`yum info nginx`。
