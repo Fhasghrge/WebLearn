@@ -200,3 +200,4 @@ if __name__ == '__main__':
 - `yum update`：更新软件包，例如`yum update`可以更新所有软件包，而`yum update tar`只会更新tar。
 - `yum check-update`：检查有哪些可以更新的软件包。
 - `yum info`：显示软件包的相关信息，例如`yum info nginx`。
+#### unix文件系统并不在乎文件扩展名，只是起到提示作用

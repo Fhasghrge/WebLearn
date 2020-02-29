@@ -62,3 +62,5 @@ app.use(functiion(req, res) {
 
 })
 ```
+- _proto_在所有的对象中都会有，prototype只是在函数对象中才会存在
+![构造函数实现原理](../assets/构造函数.jpg)
