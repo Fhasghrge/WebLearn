@@ -181,3 +181,9 @@
     - content-box（border会加到外面） | border-box（border加到内部）
 - outline-offset
     - 设置 outline 与一个元素边缘或边框之间的间隙
+
+
+
+## css进阶
+
+- 通过@font-face自定义字体类型以及字体地址

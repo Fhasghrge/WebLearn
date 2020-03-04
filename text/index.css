@@ -1,0 +1,6 @@
+main div {
+  color: red;
+}
+main div:hover {
+  color: green;
+}
