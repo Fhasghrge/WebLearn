@@ -187,3 +187,22 @@
 ## css进阶
 
 - 通过@font-face自定义字体类型以及字体地址
+#### width（盒子根据内容变换高度）
+- fill-available可以自动撑满可用空间父元素
+- fill-content根据内容自适应尺寸或者通过内边距撑起边距达到自适应的目的
+- 可以通过min-content和max-content自适应大小
+
+#### background-repeat
+- space 对背景图进行平均分配
+#### background-attachment
+- fixed背景图不随下拉滚动
+#### background-position
+- 确定背景图的位置
+#### background-size: cover
+#### background: linear-gradient 实现某个方向的颜色渐变效果
+- 可以实现标志位
+- 设置中间点
+#### background: radial-gradient 实现中心渐变的效果
+- 可以设置标志位
+#### background: repeat-linear-gradient 实现渐变重复颜色
+#### background : repeat-radial-gradient
