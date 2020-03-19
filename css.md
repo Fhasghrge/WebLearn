@@ -206,3 +206,10 @@
 - 可以设置标志位
 #### background: repeat-linear-gradient 实现渐变重复颜色
 #### background : repeat-radial-gradient
+
+#### list-style-image 可以使用线性渐变和镜像渐变
+#### after和before可以通过读取样式属性进行html到css的传值
+#### shape-outside 控制普通元素与元素之间的环绕关系，定义边框的形状
+#### clip-path定制图形的形状    
+#### positon: sticky粘性定位
+#### background-clip决定背景所在的位置
